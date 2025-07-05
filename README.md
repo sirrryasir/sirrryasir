@@ -24,7 +24,7 @@
 
 - 📫 How to reach me **hyaasir012@gmail.com**
 
-- 📄 Know about my experiences [www.linkedin.com/in/sirrryasir](www.linkedin.com/in/sirrryasir)
+- 📄 Know about my experiences [sirrryasir](www.linkedin.com/in/sirrryasir)
 
 - ⚡ Fun fact **I started my design journey as a teenager and now mentor others part-time.**
 
