@@ -22,7 +22,7 @@
 
 - 💬 Ask me about **graphic design and how to turn ideas into stunning visuals**
 
-- 📫 How to reach me **mailto:hyaasir012@gmail.com**
+- 📫 How to reach me **hyaasir012@gmail.com**
 
 - 📄 Know about my experiences [www.linkedin.com/in/sirrryasir](www.linkedin.com/in/sirrryasir)
 
