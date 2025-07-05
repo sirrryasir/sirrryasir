@@ -1,5 +1,6 @@
-<h1 align="center">Hi 👋, I'm Yazir Hassan</h1>
-<h3 align="center">Turning ideas into stunning visuals | Passionate about design and digital marketing.</h3>
+<h1 align="center">Hi 👋, I'm Yasir Hassan</h1>
+<h3 align="center">Creative Visual Designer & Developer</h3>
+<h4 align="center">Always learning. Always building.</h4>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=yazzzzzyyy&label=Profile%20views&color=0e75b6&style=flat" alt="yazzzzzyyy" /> </p>
 
@@ -7,11 +8,11 @@
 
 <p align="left"> <a href="https://twitter.com/yazzzzzyyy1" target="blank"><img src="https://img.shields.io/twitter/follow/yazzzzzyyy1?logo=twitter&style=for-the-badge" alt="yazzzzzyyy1" /></a> </p>
 
-- 🔭 I’m currently working on [PomoSom](https://github.com/yazzzzzyyy/PomoSom)
+- 🔭 I’m currently working on [PomoSom](https://github.com/sirrryasir/PomoSom)
 
 - 🌱 I’m currently learning **advanced front-end web development**
 
-- 👯 I’m looking to collaborate on **to collaborate on branding, video editing, and digital design projects.**
+- 👯 I’m looking to collaborate on **branding, video editing, and digital design projects.**
 
 - 🤝 I’m looking for help with **improving my front-end development skills (HTML, CSS, JavaScript).**
 
@@ -29,8 +30,8 @@
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
-<a href="https://twitter.com/yazzzzzyyy1" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="yazzzzzyyy1" height="30" width="40" /></a>
-<a href="https://linkedin.com/in/www.linkedin.com/in/yazir-hassan-87aa96364" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="www.linkedin.com/in/yazir-hassan-87aa96364" height="30" width="40" /></a>
+<a href="https://x.com/sirrryasir" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="yazzzzzyyy1" height="30" width="40" /></a>
+<a href="https://linkedin.com/in/www.linkedin.com/in/sirrryasir" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="www.linkedin.com/in/sirrryasir" height="30" width="40" /></a>
 </p>
 
 <h3 align="left">Languages and Tools:</h3>
