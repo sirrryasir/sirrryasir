@@ -1,5 +1,5 @@
 <h1 align="center">👋 Hey, I'm <strong>Yasir Hassan</strong></h1>
-<h3 align="center">Full-Stack Developer • UI Engineer • Graphic Designer</h3>
+<h3 align="center">Full-Stack Developer • Graphic Designer</h3>
 <p align="center">I build clean, fast, and meaningful digital products — from UI to full-stack.</p>
 
 <br/>
