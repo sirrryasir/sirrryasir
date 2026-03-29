@@ -37,11 +37,11 @@ I am a self-taught software engineer, navigating the deep waters of full-stack a
 ### // Tech.stack
 ```json
 {
-  "languages": ["TypeScript", "Python", "Go"],
+  "languages": ["TypeScript", "Python", "Go (Learning)"],
   "os": "Arch Linux",
-  "editor": ["Neovim (NVIM)", "VS Code"],
+  "editor": ["Neovim (Learning)", "VS Code"],
   "terminal": ["Kitty", "Zsh"],
-  "web": ["Next.js", "React", "Node.js", "Tailwind"]
+  "web": ["Next.js", "MERN", "PERN"]
 }
 ```
 
