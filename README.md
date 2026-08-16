@@ -44,7 +44,7 @@ I am a self-taught **Software Engineer**, navigating the deep waters of full-sta
 | **Archon CLI** | Socratic AI Software Architect CLI (Go). | [Repo](https://github.com/sirrryasir/archon) |
 | **Mongoose Studio** | Professional GUI for Mongoose (TypeScript). | [Repo](https://github.com/sirrryasir/mongoose-studio) |
 | **Ogaal** | Water Intelligence & Decision Support Platform. | [Repo](https://github.com/sirrryasir/ogaal) |
-| **Dotfiles** | My personal dotfiles, streamlined and tailored for my Linux environment. | [Repo](https://github.com/sirrryasir/dotfiles) |
+| **Dotfiles** | My personal dotfiles for my Linux environment. | [Repo](https://github.com/sirrryasir/dotfiles) |
 
 <br/>
 
