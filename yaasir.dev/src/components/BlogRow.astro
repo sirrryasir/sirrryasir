@@ -1,0 +1,39 @@
+---
+import { formatDate } from "@/utils/formatDate";
+
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  date: Date;
+  readTime?: string;
+  tags?: string[];
+}
+
+const { title, href, date, readTime } = Astro.props;
+const formatted = formatDate(date);
+---
+
+<a
+  href={href}
+  class="group flex flex-col sm:flex-row sm:items-center justify-between py-3 gap-2 border-b border-[var(--color-border-subtle)]/30"
+>
+  <h3
+    class="text-sm font-medium text-[var(--color-text-body)] group-hover:text-[var(--color-accent)] transition-colors inline-block link-underline"
+  >
+    {title}
+  </h3>
+  <div
+    class="flex items-center gap-3 text-xs font-mono text-[var(--color-text-muted)] shrink-0"
+  >
+    <time datetime={date.toISOString()}>{formatted}</time>
+    {
+      readTime && (
+        <>
+          <span class="text-[var(--color-border-subtle)]">/</span>
+          <span>{readTime}</span>
+        </>
+      )
+    }
+  </div>
+</a>

@@ -1,0 +1,101 @@
+backend:
+  name: github
+  repo: sirrryasir/Yaasir.dev # GitHub repository (username/repo)
+  branch: main # Branch to deploy from
+  base_url: https://www.yaasir.dev
+  auth_endpoint: api/auth
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+# Local Backend for development
+local_backend: true
+
+# Customization
+logo_url: "/images/sirc.png"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    label_singular: "Project"
+    folder: "src/content/projects"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    preview_path: "projects/{{slug}}"
+    fields:
+      - { label: "Project Title", name: "title", widget: "string" }
+      - {
+          label: "Short Description",
+          name: "description",
+          widget: "text",
+          hint: "Summary displayed on the project card.",
+        }
+      - {
+          label: "Date",
+          name: "date",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+        }
+      - {
+          label: "Is Featured?",
+          name: "featured",
+          widget: "boolean",
+          default: false,
+          hint: "If true, it will be displayed on the homepage.",
+        }
+      - {
+          label: "Live URL",
+          name: "url",
+          widget: "string",
+          required: false,
+          hint: "Live website link (e.g. https://domain.com)",
+        }
+      - {
+          label: "GitHub Repo",
+          name: "github",
+          widget: "string",
+          required: false,
+        }
+      - {
+          label: "Draft / Hidden",
+          name: "draft",
+          widget: "boolean",
+          default: false,
+          hint: "Hide this project from visitors if checked.",
+        }
+      - { label: "Body Content (Markdown)", name: "body", widget: "markdown" }
+
+  - name: "blog"
+    label: "Blog Posts"
+    label_singular: "Blog Post"
+    folder: "src/content/blog"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    preview_path: "blog/{{slug}}"
+    fields:
+      - { label: "Post Title", name: "title", widget: "string" }
+      - { label: "Excerpt / Description", name: "description", widget: "text" }
+      - {
+          label: "Publish Date",
+          name: "date",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+          date_format: "YYYY-MM-DD",
+          time_format: false,
+        }
+      - {
+          label: "Draft / Hidden",
+          name: "draft",
+          widget: "boolean",
+          default: false,
+          hint: "Hide this post from visitors if checked.",
+        }
+      - { label: "Body Content", name: "body", widget: "markdown" }

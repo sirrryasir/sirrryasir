@@ -1,0 +1,65 @@
+---
+import { Image } from "astro:assets";
+import { profile } from "@/data/site";
+import avatarImg from "@/assets/sir.png";
+---
+
+<section class="relative pt-20 pb-16 px-8 mx-auto max-w-3xl">
+  <div class="flex items-center gap-5 mb-8">
+    <span class="relative inline-block flex-shrink-0 group cursor-default">
+      <span
+        class="size-16 sm:size-20 rounded-2xl overflow-hidden
+                   ring-1 ring-[var(--color-border-subtle)]/50 shadow-sm
+                   inline-flex items-center justify-center
+                   bg-[var(--color-tag-bg)]
+                   group-hover:scale-110 group-hover:-rotate-3
+                   transition-all duration-300 ease-in-out z-10 relative"
+      >
+        <Image
+          src={avatarImg}
+          alt={`${profile.name} avatar`}
+          class="size-full object-cover object-top"
+          width={80}
+          height={80}
+          loading="eager"
+          fetchpriority="high"
+        />
+      </span>
+
+      <span
+        class="absolute -bottom-1 -right-1 size-4 rounded-full z-20
+                   bg-[var(--color-accent)] border-[3px] border-[var(--color-bg-fade)]"
+      >
+        <span
+          class="absolute inset-0 rounded-full animate-ping bg-[var(--color-accent)] opacity-75"
+        ></span>
+      </span>
+    </span>
+
+    <div>
+      <h1
+        class="text-2xl sm:text-3xl font-semibold text-[var(--color-text-heading)] tracking-tight"
+      >
+        {profile.name}
+      </h1>
+      <p class="text-sm font-mono text-[var(--color-text-muted)] mt-1.5">
+        {profile.role.toLowerCase()}
+      </p>
+    </div>
+  </div>
+
+  <div class="space-y-4">
+    <p
+      class="text-sm sm:text-base text-[var(--color-text-body)] max-w-xl leading-relaxed"
+    >
+      {profile.intro}
+    </p>
+    {
+      profile.current && (
+        <p class="text-sm sm:text-base text-[var(--color-text-body)] max-w-xl leading-relaxed">
+          {profile.current}
+        </p>
+      )
+    }
+  </div>
+</section>

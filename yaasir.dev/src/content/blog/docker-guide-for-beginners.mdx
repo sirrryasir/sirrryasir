@@ -1,0 +1,102 @@
+---
+title: "Docker and Containerization"
+description: "Baro asaasiga Docker, dhibaatada uu xalliyo, iyo sida loo container-ize gareeyo mashruuc Next.js/React ah adigoo isticmaalaya tusaalooyin nolosha dhabta ah."
+date: 2026-02-12
+tags: []
+---
+
+# Docker and Containerization
+
+![Docker Logo](https://www.docker.com/wp-content/uploads/2022/03/Moby-logo.png)
+
+Dhibaatada ugu weyn ee haysata horumariyayaasha software-ka ayaa ah in codeka ay qoraan uu ku shaqeeyo kombuyutarka ay wax ku qorayaan, balse uu diido inuu ka shaqeeyo marka loo gudbiyo server-yada ama kombuyutarada kale. Docker waxaa loo sameeyay inuu xalliyo dhibaatadaas asaasiga ah isagoo bixinaya jawi dammaanad qaadaya isku-midnimo meel kasta.
+
+## Waa maxay Docker?
+
+Docker waa qalab u suurtagelinaya horumariyayaasha inay codekooda iyo dhammaan agabyada (dependencies) uu u baahan yahay ay isku dhex ridaan hal weel oo la yiraahdo **Container**. Weelkani wuxuu ka go'an yahay nidaamka guud ee kombuyutarka, taas oo hubinaysa in codekaagu uusan ku xirnaan deegaanka ka baxsan balse uu ku dhex jiro goob go'an oo dammaanad leh.
+
+---
+
+## Tusaalaha Nolosha Dhabta ah: Geedka iyo Ciidda Nursery-ga
+
+Bal qiyaas adigoo geed yar ku soo koriyay meel xannaano geedaha ah (Nursery). Geedkaas wuxuu u bartay ciid gaar ah, heerkul go'an, iyo nafaqo u gaar ah si uu u koro. Haddii aad go'aansato inaad geedkaas u beddesho beer kale, ka dibna aad ka soo siibto geedka oo kaliya adigoo xididdada ka soo jaraya ciiddii uu ku dhex jiray, waxaa jirta khatar weyn oo ah inuu geedkaas ku dhinto beerta cusub. Sababtu waxay tahay ciidda iyo nafaqada beerta cusub way ka duwanaan karaan kuwii uu ku soo koray.
+
+Hadda ka fikir haddii aad geedkaas ku qaado isagoo ku dhex jira weelkiisii (Pot) iyo ciiddii uu ku soo dhashay ee uu u bartay. Markaad geyso beerta cusub, geedku si caadi ah ayuu u baxayaa, waayo wuxuu meel kasta la tegayaa deegaankii uu u baahnaa si uu u noolaado. Ma ahan mid ku xiran ciidda beerta cusub, ee wuxuu ku dhex dhisanyahay ciiddii isaga u gaarka ahayd.
+
+**Docker waa isla weelkaas (Container) oo kale.** Isagu kuma siinayo codeka oo kaliya, ee wuxuu kuu raacinayaa dhammaan "ciiddii" ama deegaankii uu codeku u baahnaa (Runtime, libraries, environment variables). Taasina waxay hubinaysaa in codekaagu si isku mid ah ugu baxo kombuyutar kasta oo la geeyo.
+
+---
+
+## Tiirarka Nidaamka Docker
+
+Si loo maareeyo codeka iyadoo la isticmaalayo Docker, waxaa muhiim ah in la fahmo saddexda qaybood ee soo socda:
+
+- **Dockerfile:** Waa qoraal tilmaame ah oo qeexaya dhammaan tillaabooyinka loo baahan yahay si loo dhiso container-ka.
+- **Docker Image:** Waa nuqulka aan isbeddelin ee ka dhasha Dockerfile. Waa hage diyaar ah oo loo isticmaali karo in lagu shido container.
+- **Docker Container:** Waa marka image-kii la socodsiiyo. Waa deegaanka uu codekaagu si dhab ah uga dhex shaqeynayo.
+
+---
+
+## Habka Isticmaalka (Tusaale Next.js/React)
+
+Haddii aad haysato mashruuc lagu dhisay Next.js/React, raac tillaabooyinkan si aad ugu isticmaasho Docker nidaamkaaga.
+
+### 1. Diyaarinta Dockerfile
+
+Ku dhex samee qaybta sare ee mashruucaaga (root) fayl magaciisu yahay `Dockerfile` oo u qor qaabka soo socda:
+
+```dockerfile
+# 1. Soo qaado image-ka rasmiga ah ee Node.js
+FROM node:20-alpine
+
+# 2. Qeex halka codeka la dhigayo gudaha container-ka
+WORKDIR /app
+
+# 3. Nuqul ka samee faylka package.json
+COPY package.json ./
+
+# 4. Ku shub dhammaan agabyada (dependencies)
+RUN npm install
+
+# 5. Nuqul ka samee dhammaan fayllada kale ee mashruuca
+COPY . .
+
+# 6. Samee dhismaha (Build) mashruuca ee loogu talagalay production
+RUN npm run build
+
+# 7. Hubi in port-ka 3000 uu yahay halka laga gelayo codeka
+EXPOSE 3000
+
+# 8. Amarka ugu dambeeya ee lagu shidayo codeka
+CMD ["npm", "start"]
+```
+
+### 2. Dhisidda Image-ka
+
+Fura terminal-kaaga, ka dibna raac amarkan si aad u dhisid image-ka ugu horreeya:
+
+```bash
+docker build -t my-app .
+```
+
+### 3. Socodsiinta Container-ka
+
+Ugu dambayn, shid container-ka si uu website-kaagu u diyaariyo xiriirka port-ka 3000:
+
+```bash
+docker run -p 3000:3000 my-app
+```
+
+---
+
+## Faa'iidooyinka Ganacsiga iyo Horumarinta
+
+- **Isku-midnimo:** Codekaagu wuxuu u shaqeynayaa si isku mid ah dhammaan deegaanada kala duwan.
+- **Fasiraad yar:** Ma jiraan waxyaabo badan oo u baahan in gacanta lagu rakibo marka la beddelayo server-ka.
+- **Maareyn Fudud:** Waxaad si sahlan ku beddeli kartaa ama ku cusboonaysiin kartaa qayb ka mid ah nidaamkaaga adigoon saameyn ku yeelan inta kale.
+
+Docker ma aha oo kaliya qalab ee waa nidaam shaqo oo kor u qaadaya tayada iyo hufnaanta horumarinta software-ka.
+
+---
+
+**Knowledge is powerful... but consistency is what gets you hired!**

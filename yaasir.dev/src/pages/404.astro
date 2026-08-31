@@ -1,0 +1,31 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { ArrowLeft } from "@lucide/astro";
+---
+
+<BaseLayout title="404" description="Page not found">
+  <div class="px-8 mx-auto max-w-3xl pt-48 pb-24 text-center">
+    <p
+      class="font-mono text-xs text-[var(--color-text-muted)] uppercase tracking-widest mb-4"
+    >
+      404
+    </p>
+    <h1
+      class="font-display italic text-4xl sm:text-6xl text-[var(--color-text-heading)] mb-6"
+    >
+      Nothing here.
+    </h1>
+    <p class="text-sm text-[var(--color-text-body)] mb-10">
+      This page doesn't exist or has been moved.
+    </p>
+    <a
+      href="/"
+      class="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium
+             bg-[var(--color-tag-bg)] border border-[var(--color-tag-border)]
+             text-[var(--color-text-body)] hover:text-[var(--color-text-heading)]
+             hover:border-[var(--color-border-subtle)] transition-all duration-200"
+    >
+      <ArrowLeft class="size-4" /> Go home
+    </a>
+  </div>
+</BaseLayout>

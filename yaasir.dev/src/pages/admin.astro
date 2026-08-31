@@ -1,0 +1,29 @@
+---
+// Decap CMS Entry Point
+import { profile } from "@/data/site";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <!-- Tell Decap exactly where to find the config file -->
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+    <title>Content Manager | {profile.name}</title>
+
+    <style is:global>
+      /* Hide Decap CMS branding logo and text at the bottom of the login screen */
+      span[class*="NetlifyCreditIcon"],
+      div[class*="NetlifyCreditIcon"] {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Include the script that builds the page and powers Decap CMS -->
+    <script is:inline src="https://unpkg.com/decap-cms@3.4.0/dist/decap-cms.js"
+    ></script>
+  </body>
+</html>

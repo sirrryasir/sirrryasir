@@ -1,0 +1,603 @@
+@import "tailwindcss";
+
+/* Design Tokens */
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
+  --font-display: "Instrument Serif", Georgia, serif;
+
+  /* Base neutral scale */
+  --color-base-50: #f8f9fc;
+  --color-base-100: #f0f2f8;
+  --color-base-200: #e2e6f0;
+  --color-base-300: #c8cfe0;
+  --color-base-400: #9aa3be;
+  --color-base-500: #6b789a;
+  --color-base-600: #4a5478;
+  --color-base-700: #323a58;
+  --color-base-800: #1e2540;
+  --color-base-850: #141a30;
+  --color-base-900: #0d1222;
+  --color-base-950: #050507;
+
+  /* Accent colors */
+  --color-accent: #1e90ff;
+  --color-accent-dim: #1260cc;
+  --color-accent-navy: #001f54;
+  --color-accent-glow: rgba(30, 144, 255, 0.15);
+
+  /* Light mode surface */
+  --color-surface-light: #f5f7fc;
+  --color-border-light: rgba(30, 144, 255, 0.12);
+}
+
+/* Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-base-950);
+  color: var(--color-base-200);
+  min-height: 100svh;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+/* Light mode & Theme Variables */
+:root {
+  --color-text-heading: var(--color-base-100);
+  --color-text-body: var(--color-base-300);
+  --color-text-muted: var(--color-base-500);
+  --color-border-subtle: var(--color-base-900);
+  --color-bg-fade: var(--color-base-950);
+  --color-tag-bg: var(--color-base-900);
+  --color-tag-border: var(--color-base-800);
+}
+
+html.light {
+  --color-text-heading: var(--color-base-900);
+  --color-text-body: var(--color-base-700);
+  --color-text-muted: var(--color-base-500);
+  --color-border-subtle: var(--color-base-200);
+  --color-bg-fade: var(--color-surface-light);
+  --color-tag-bg: var(--color-base-100);
+  --color-tag-border: var(--color-base-200);
+}
+
+html.light body {
+  background-color: var(--color-surface-light);
+  color: var(--color-text-body);
+}
+
+html.light .pill-nav {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(30, 144, 255, 0.15) !important;
+  box-shadow: 0 4px 24px rgba(0, 31, 84, 0.08) !important;
+}
+
+html.light .pill-nav a,
+html.light .pill-nav button {
+  color: var(--color-base-600) !important;
+}
+
+html.light .pill-nav a:hover,
+html.light .pill-nav button:hover {
+  color: var(--color-base-900) !important;
+  background: var(--color-base-100) !important;
+}
+
+html.light .pill-nav .active-nav {
+  background: var(--color-base-900) !important;
+  color: var(--color-base-50) !important;
+}
+
+html.light .gradient-card {
+  background: #ffffff !important;
+  border-color: var(--color-base-200) !important;
+  box-shadow: 0 2px 16px rgba(0, 31, 84, 0.06) !important;
+}
+
+html.light .gradient-card:hover {
+  box-shadow: 0 4px 32px rgba(30, 144, 255, 0.12) !important;
+}
+
+html.light .bg-glow::before {
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      rgba(30, 144, 255, 0.06) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 100%,
+      rgba(0, 31, 84, 0.04) 0%,
+      transparent 60%
+    );
+}
+
+html.light .btn-secondary {
+  background: transparent !important;
+  border-color: var(--color-base-300) !important;
+  color: var(--color-base-600) !important;
+}
+
+html.light .btn-secondary:hover {
+  background: var(--color-base-100) !important;
+  color: var(--color-base-900) !important;
+  border-color: var(--color-base-400) !important;
+}
+
+/* Light text overrides */
+html.light .text-dim {
+  color: var(--color-base-500) !important;
+}
+html.light .border-subtle {
+  border-color: var(--color-base-200) !important;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Radial background glow */
+.bg-glow {
+  position: relative;
+}
+.bg-glow::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 60% at 50% -10%,
+      rgba(30, 144, 255, 0.07) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 80% 100%,
+      rgba(0, 31, 84, 0.08) 0%,
+      transparent 60%
+    );
+  z-index: 0;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-base-950);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-base-800);
+  border-radius: 2px;
+}
+html.light ::-webkit-scrollbar-track {
+  background: var(--color-base-100);
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: var(--color-base-300);
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 24s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Project card hover reveal */
+.card-reveal {
+  transform: translateY(5rem);
+  opacity: 0;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+.group:hover .card-reveal {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Menu overlay animation */
+#menu-overlay {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+#menu-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+#menu-overlay nav a {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+#menu-overlay.open nav a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Light mode overlay */
+html.light #menu-overlay {
+  background-color: rgba(245, 247, 252, 0.97) !important;
+}
+
+/* Pill nav (floating) */
+.pill-nav {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(13, 18, 34, 0.85);
+  border: 1px solid rgba(30, 144, 255, 0.12);
+  border-radius: 9999px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Online indicator pulse */
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.4);
+  }
+}
+.online-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Underline link hover */
+.link-underline {
+  position: relative;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Stack card rotations */
+.card-rotate-1 {
+  transform: rotate(6deg);
+  transition: transform 0.3s ease;
+}
+.card-rotate-2 {
+  transform: rotate(-12deg);
+  transition: transform 0.3s ease;
+}
+.card-rotate-1:hover,
+.card-rotate-2:hover {
+  transform: rotate(0deg) !important;
+}
+
+/* Gradient cards */
+.gradient-card {
+  background: linear-gradient(
+    135deg,
+    var(--color-base-900) 0%,
+    var(--color-base-850) 100%
+  );
+  border: 1px solid var(--color-base-800);
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.gradient-card:hover {
+  border-color: rgba(30, 144, 255, 0.25);
+  box-shadow: 0 0 32px rgba(30, 144, 255, 0.06);
+}
+
+/* Prose - Markdown content */
+.prose {
+  color: var(--color-base-300);
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 65ch;
+}
+
+.prose > * + * {
+  margin-top: 1.25em;
+}
+
+/* Headings */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--color-base-50);
+  font-weight: 600;
+  line-height: 1.25;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+.prose h1 {
+  font-size: 2em;
+}
+.prose h2 {
+  font-size: 1.4em;
+  border-bottom: 1px solid var(--color-base-800);
+  padding-bottom: 0.4em;
+}
+.prose h3 {
+  font-size: 1.15em;
+}
+.prose h4 {
+  font-size: 1em;
+}
+
+/* First heading no top margin */
+.prose :first-child {
+  margin-top: 0;
+}
+
+/* Paragraphs */
+.prose p {
+  margin-top: 0;
+  margin-bottom: 1.25em;
+  color: var(--color-base-300);
+}
+
+/* Links */
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: rgba(30, 144, 255, 0.4);
+  transition: text-decoration-color 0.2s;
+}
+.prose a:hover {
+  text-decoration-color: var(--color-accent);
+}
+
+/* Bold + italic */
+.prose strong {
+  color: var(--color-base-100);
+  font-weight: 600;
+}
+.prose em {
+  color: var(--color-base-300);
+  font-style: italic;
+}
+
+/* Lists */
+.prose ul,
+.prose ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.25em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+}
+.prose ul {
+  list-style-type: disc;
+}
+.prose ol {
+  list-style-type: decimal;
+}
+.prose li {
+  color: var(--color-base-300);
+}
+.prose li::marker {
+  color: var(--color-accent);
+}
+.prose li > strong {
+  color: var(--color-base-100);
+}
+
+/* Inline code */
+.prose :not(pre) > code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-base-900);
+  border: 1px solid var(--color-base-800);
+  color: var(--color-accent);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* Code blocks */
+.prose pre {
+  background: var(--color-base-900);
+  border: 1px solid var(--color-base-800);
+  border-radius: 12px;
+  padding: 1.25em 1.5em;
+  overflow-x: auto;
+  margin-bottom: 1.5em;
+}
+.prose pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--color-base-200);
+  font-size: 0.875em;
+}
+
+/* Blockquote */
+.prose blockquote {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1em;
+  color: var(--color-base-400);
+  font-style: italic;
+  margin: 1.5em 0;
+}
+
+/* HR */
+.prose hr {
+  border: none;
+  border-top: 1px solid var(--color-base-800);
+  margin: 2em 0;
+}
+
+/* Images */
+.prose img {
+  border-radius: 12px;
+  max-width: 100%;
+  margin: 1.5em 0;
+  border: 1px solid var(--color-base-800);
+}
+
+/* Light mode prose */
+html.light .prose {
+  color: var(--color-base-600);
+}
+html.light .prose h1,
+html.light .prose h2,
+html.light .prose h3,
+html.light .prose h4 {
+  color: var(--color-base-900);
+}
+html.light .prose h2 {
+  border-color: var(--color-base-200);
+}
+html.light .prose p,
+html.light .prose li {
+  color: var(--color-base-600);
+}
+html.light .prose strong {
+  color: var(--color-base-800);
+}
+html.light .prose em {
+  color: var(--color-base-700);
+}
+html.light .prose :not(pre) > code {
+  background: var(--color-base-100);
+  border-color: var(--color-base-200);
+  color: var(--color-accent-dim);
+}
+html.light .prose blockquote {
+  color: var(--color-base-500);
+}
+html.light .prose hr {
+  border-color: var(--color-base-200);
+}
+html.light .prose img {
+  border-color: var(--color-base-200);
+}
+
+/* Interactive Cursor Spotlight */
+#cursor-spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    600px circle at var(--x, 0px) var(--y, 0px),
+    rgba(30, 144, 255, 0.05),
+    transparent 80%
+  );
+}
+html.light #cursor-spotlight {
+  display: none !important;
+}
+
+/* Spotlight Card */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(30, 144, 255, 0.15),
+    transparent 80%
+  );
+  padding: 1px;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.spotlight-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  background: radial-gradient(
+    350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(30, 144, 255, 0.05),
+    transparent 80%
+  );
+}
+
+.spotlight-card:hover::before,
+.spotlight-card:hover::after {
+  opacity: 1;
+}
+
+html.light .spotlight-card::before {
+  background: radial-gradient(
+    250px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(30, 144, 255, 0.3),
+    transparent 80%
+  );
+}
+
+html.light .spotlight-card::after {
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(30, 144, 255, 0.04),
+    transparent 80%
+  );
+}

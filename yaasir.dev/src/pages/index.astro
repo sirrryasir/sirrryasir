@@ -1,0 +1,58 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import HeroSection from "@/components/HeroSection.astro";
+import ProjectRow from "@/components/ProjectRow.astro";
+import BlogRow from "@/components/BlogRow.astro";
+import SectionHeader from "@/components/SectionHeader.astro";
+import { getReadingTime } from "@/utils/readingTime";
+
+const allProjects = (await getCollection("projects"))
+  .filter((project) => project.data.draft !== true)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const allPosts = (await getCollection("blog"))
+  .filter((post) => post.data.draft !== true)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+---
+
+<BaseLayout>
+  <HeroSection />
+
+  <div class="px-8 mx-auto max-w-3xl space-y-24 pb-24">
+    <section>
+      <SectionHeader title="Work" />
+      <div class="flex flex-col gap-1 mt-4">
+        {
+          allProjects.map((project) => (
+            <ProjectRow
+              title={project.data.title}
+              description={project.data.description}
+              githubUrl={project.data.github}
+              liveUrl={project.data.url}
+            />
+          ))
+        }
+      </div>
+    </section>
+
+    <section>
+      <SectionHeader title="Writing" href="/blog/" linkLabel="Read all posts" />
+      <div class="flex flex-col gap-1 mt-4">
+        {
+          allPosts.map((post) => (
+            <BlogRow
+              title={post.data.title}
+              description={post.data.description}
+              href={`/blog/${post.id.replace(/\.mdx?$/, "")}/`}
+              date={post.data.date}
+              readTime={getReadingTime(post.body || "")}
+              tags={post.data.tags}
+            />
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</BaseLayout>

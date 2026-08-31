@@ -1,0 +1,56 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getReadingTime } from "@/utils/readingTime";
+import { ArrowLeft } from "@lucide/astro";
+import { formatDate } from "@/utils/formatDate";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/\.mdx?$/, "") },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const formatted = formatDate(post.data.date);
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+>
+  <div class="px-8 mx-auto max-w-3xl pt-20 pb-24">
+    <a
+      href="/blog/"
+      class="inline-flex items-center gap-1.5 text-sm font-mono text-[var(--color-text-muted)]
+              hover:text-[var(--color-accent)] transition-colors mb-12 link-underline"
+    >
+      <ArrowLeft class="size-4" /> back
+    </a>
+
+    <div class="mb-12">
+      <h1
+        class="text-3xl sm:text-4xl md:text-5xl font-medium text-[var(--color-text-heading)] mb-6 tracking-tight leading-tight text-balance"
+      >
+        {post.data.title}
+      </h1>
+
+      <div
+        class="flex items-center gap-3 text-sm font-mono text-[var(--color-text-muted)]"
+      >
+        <time datetime={post.data.date.toISOString()}>
+          {formatted}
+        </time>
+        <span class="text-[var(--color-border-subtle)]">/</span>
+        <span>{getReadingTime(post.body || "")}</span>
+      </div>
+    </div>
+
+    <div class="prose max-w-none">
+      <Content />
+    </div>
+  </div>
+</BaseLayout>

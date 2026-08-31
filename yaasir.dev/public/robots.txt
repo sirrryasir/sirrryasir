@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yaasir.dev/sitemap-index.xml

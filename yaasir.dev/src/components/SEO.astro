@@ -1,0 +1,53 @@
+---
+import { profile } from "@/data/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description = profile.intro,
+  image = "/og-image.png",
+} = Astro.props;
+
+const siteName = profile.name;
+const finalTitle = title ? `${title} | ${siteName}` : `${siteName} | Software Engineer`;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<title>{finalTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Open Graph -->
+<meta property="og:title" content={finalTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:type" content="website" />
+<meta property="og:image" content={image} />
+<meta property="og:site_name" content={profile.name} />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={`@${profile.handle}`} />
+<meta name="twitter:creator" content={`@${profile.handle}`} />
+<meta name="twitter:title" content={finalTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<!-- JSON-LD -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: profile.name,
+    url: Astro.site?.toString() || "https://yaasir.dev",
+    jobTitle: "Software Engineer",
+    sameAs: profile.links.map((link) => link.href),
+  })}
+/>

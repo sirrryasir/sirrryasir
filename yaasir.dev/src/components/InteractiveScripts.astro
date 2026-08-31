@@ -1,0 +1,92 @@
+---
+
+---
+
+<script>
+  const toggle = document.getElementById("theme-toggle");
+  const sun = document.getElementById("icon-sun");
+  const moon = document.getElementById("icon-moon");
+  const spotlight = document.getElementById("cursor-spotlight");
+
+  function applyTheme(dark: boolean) {
+    document.documentElement.classList.toggle("light", !dark);
+    if (sun) sun.classList.toggle("hidden", !dark);
+    if (moon) moon.classList.toggle("hidden", dark);
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  }
+
+  // Init
+  const saved = localStorage.getItem("theme");
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const isDark = saved ? saved === "dark" : prefersDark;
+  applyTheme(isDark);
+
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      const currentlyDark =
+        !document.documentElement.classList.contains("light");
+      applyTheme(!currentlyDark);
+    });
+  }
+
+  // Interactive mouse follow spotlight
+  document.addEventListener("mousemove", (e) => {
+    if (spotlight && !document.documentElement.classList.contains("light")) {
+      spotlight.style.setProperty("--x", `${e.clientX}px`);
+      spotlight.style.setProperty("--y", `${e.clientY}px`);
+      spotlight.style.opacity = "1";
+    }
+  });
+
+  // Setup spotlight card listeners
+  function initSpotlightCards() {
+    const cards = document.querySelectorAll(".spotlight-card");
+    cards.forEach((card) => {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e as MouseEvent).clientX - rect.left;
+        const y = (e as MouseEvent).clientY - rect.top;
+        (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
+        (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
+      });
+    });
+  }
+  initSpotlightCards();
+
+  // Setup Magnet Card effect (Vanilla JS)
+  function initMagnetEffect() {
+    const magnets = document.querySelectorAll(".magnet-target");
+    magnets.forEach((el) => {
+      let centerX = 0;
+      let centerY = 0;
+
+      el.addEventListener("mouseenter", () => {
+        const rect = el.getBoundingClientRect();
+        centerX = rect.left + rect.width / 2;
+        centerY = rect.top + rect.height / 2;
+      });
+
+      el.addEventListener("mousemove", (e) => {
+        const deltaX = (e as MouseEvent).clientX - centerX;
+        const deltaY = (e as MouseEvent).clientY - centerY;
+
+        const strength = 4;
+        const maxPull = 12;
+
+        const moveX = Math.max(-maxPull, Math.min(maxPull, deltaX / strength));
+        const moveY = Math.max(-maxPull, Math.min(maxPull, deltaY / strength));
+
+        (el as HTMLElement).style.transform =
+          `translate3d(${moveX}px, ${moveY}px, 0)`;
+        (el as HTMLElement).style.transition = "transform 0.1s ease-out";
+      });
+
+      el.addEventListener("mouseleave", () => {
+        (el as HTMLElement).style.transform = "";
+        (el as HTMLElement).style.transition =
+          "transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+      });
+    });
+  }
+  initMagnetEffect();
+</script>

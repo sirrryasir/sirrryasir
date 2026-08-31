@@ -1,0 +1,16 @@
+# Astro
+node_modules
+dist
+.astro
+
+# Vercel
+.vercel
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+.env*.local
