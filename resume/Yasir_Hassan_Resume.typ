@@ -60,29 +60,29 @@ Software engineer working on open-source developer tools and local products. Fir
   title: "Aduunyo Solutions",
   location: "Hybrid",
   subtitle: "Software Engineer",
-  date: "Jan 2026 -- Present",
+  date: "Jan 2026 – Present",
 )[
-  - Wrote a Python script to extract, validate and load transaction and client records from Upya CRM into the new Aduunyo CRM.
-  - Review code deliverables and advise on system architecture.
+  - Migrated client and transaction data from a legacy CRM to the new Aduunyo CRM (Python ETL).
+  - Review code and advise on system architecture.
 ]
 
 #resume-entry(
   title: "Ardaykaab Academy",
   location: "Hybrid",
   subtitle: "Mentor",
-  date: "Feb 2026 -- Present",
+  date: "Feb 2026 – Present",
 )[
-  - Mentor student cohorts in full-stack development, REST API design, Git and databases.
+  - Mentor students in full-stack development, REST APIs, Git and databases.
 ]
 
 #resume-entry(
   title: "Freelance",
   location: "Remote",
   subtitle: "Digital Marketer & Graphic Designer",
-  date: "2023 -- 2025",
+  date: "2023 – 2025",
 )[
-  - Designed branding, logos and user interfaces for startups in Figma, Illustrator and Photoshop.
-  - Ran digital ad campaigns for startup clients.
+  - Designed branding and user interfaces for startups (Figma, Illustrator, Photoshop).
+  - Ran digital ad campaigns for clients.
 ]
 
 == Projects
