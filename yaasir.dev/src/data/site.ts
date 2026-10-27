@@ -3,14 +3,12 @@
 export const profile = {
   name: "Yasir Hassan",
   handle: "sirrryasir",
+  xHandle: "sirryasir",
   role: "Software Engineer",
   email: "hello@yaasir.dev",
-  location: "Hargeisa",
   avatar: "/sir.png",
   intro:
-    "I build AI-driven tools and full-stack architectures. Self-taught. Driven by high-performance logic. Guided by simplicity (KISS).",
-  current:
-    "Currently writing Go, TypeScript, and Python on Arch Linux & Neovim.",
+    "Software engineer working on open-source developer tools and local products.",
   links: [
     { label: "GitHub", href: "https://github.com/sirrryasir" },
     { label: "LinkedIn", href: "https://linkedin.com/in/sirryasir" },
@@ -20,6 +18,6 @@ export const profile = {
 
 export const blog = {
   description:
-    "Writings on scalable architectures, open-source tooling, and high-signal engineering.",
-  subtitle: "Thoughts on systems, AI and everything in between.",
+    "Posts on software, tooling and AI.",
+  subtitle: "Posts on software, tooling and AI.",
 };

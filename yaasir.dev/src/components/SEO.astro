@@ -17,6 +17,8 @@ const siteName = profile.name;
 const finalTitle = title ? `${title} | ${siteName}` : `${siteName} | Software Engineer`;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// crawlers need an absolute image URL
+const imageURL = new URL(image, Astro.site);
 ---
 
 <title>{finalTitle}</title>
@@ -28,16 +30,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:type" content="website" />
-<meta property="og:image" content={image} />
+<meta property="og:image" content={imageURL} />
 <meta property="og:site_name" content={profile.name} />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content={`@${profile.handle}`} />
-<meta name="twitter:creator" content={`@${profile.handle}`} />
+<meta name="twitter:site" content={`@${profile.xHandle}`} />
+<meta name="twitter:creator" content={`@${profile.xHandle}`} />
 <meta name="twitter:title" content={finalTitle} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={image} />
+<meta name="twitter:image" content={imageURL} />
 
 <!-- JSON-LD -->
 <script
