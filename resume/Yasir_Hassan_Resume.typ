@@ -1,12 +1,14 @@
 #set document(title: "Yasir Hassan - Resume", author: "Yasir Hassan")
 #set page(
   paper: "a4",
-  margin: (x: 1.5cm, y: 1.5cm),
+  margin: (x: 1.5cm, y: 1.2cm),
 )
 #set text(
   font: ("Libertinus Serif", "Liberation Sans"),
-  size: 11pt,
+  size: 10.5pt,
 )
+#set par(leading: 0.55em, spacing: 0.7em)
+#set list(spacing: 0.5em)
 
 #show heading.where(level: 1): it => [
   #set align(center)
@@ -15,8 +17,8 @@
 ]
 
 #show heading.where(level: 2): it => [
-  #set text(size: 14pt, weight: "bold", fill: rgb("#000000"))
-  #v(5pt)
+  #set text(size: 13pt, weight: "bold", fill: rgb("#000000"))
+  #v(2pt)
   #it.body
   #line(length: 100%, stroke: 0.5pt)
   #v(2pt)
@@ -53,6 +55,7 @@ Software engineer working on open-source developer tools and local products. Fir
 
 == Skills
 - *Languages:* Go, TypeScript, Python, Rust
+- *Tools:* React, Next.js, Node.js, PostgreSQL, MongoDB, Docker, Git, Linux
 
 == Experience
 
@@ -111,7 +114,16 @@ Software engineer working on open-source developer tools and local products. Fir
   subtitle: "Open Source Creator",
   date: "2026",
 )[
-  - Dynamic island shell for Hyprland, built on Quickshell. Combines the bar, launcher, notifications, control center, lock and login screens in one pill. Packaged on the AUR.
+  - Dynamic island shell for Hyprland, built on Quickshell. Bar, launcher, notifications, control center and lock screen in one pill. Packaged on the AUR.
+]
+
+#resume-entry(
+  title: "Kaydify",
+  location: "Next.js, TypeScript, PostgreSQL",
+  subtitle: "Creator",
+  date: "2025",
+)[
+  - Free past exam papers, notes and answers for secondary school students. Live at #link("https://kaydify.com")[kaydify.com].
 ]
 
 == Awards & Hackathons
